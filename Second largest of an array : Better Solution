@@ -13,7 +13,7 @@ public class sec {
 			arr[i]=scanner.nextInt();
 		}
 		int largest=arr[0];
-		int second_largest=-1;
+		int second_largest=Integer.Min_Value;
 		for(int i=1;i<n;i++)
 		{
 			if(arr[i]>largest)
