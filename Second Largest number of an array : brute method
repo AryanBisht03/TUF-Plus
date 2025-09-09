@@ -1,0 +1,94 @@
+package second;
+import java.util.*;
+import java.util.Scanner;
+public class Second_largest {
+	
+public int[] selection(int arr[],int n)
+{
+	int min=0;
+	for(int i=0;i<n-1;i++)
+	{
+		min=i;
+		for(int j=i;j<n;j++)
+		{
+			if(arr[j]<arr[min])
+			{
+				min=j;
+			}
+		}
+		if(i!=min)
+		{
+			int temp=arr[i];
+			arr[i]=arr[min];
+			arr[min]=temp;
+		}
+	}
+	return arr;
+}
+
+public int[] bubble(int arr[],int n)
+{
+	boolean isSwapped=false;
+	for(int i=n-1;i>=0;i--)
+	{
+		for(int j=0;j<=i-1;j++)
+		{
+			if(arr[j]>arr[j+1])
+			{
+				int temp=arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=temp;
+				isSwapped=true;
+			}
+		}
+		if(!isSwapped)
+			break;
+	}
+	return arr;
+}
+	
+public static void main(String args[])
+{
+	Scanner scanner=new Scanner(System.in);
+	System.out.println("Enter the number of elements you wanted in your array");
+	int n=scanner.nextInt();
+	int arr[]=new int[n];
+	System.out.println("Enter the elements");
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=scanner.nextInt();
+	}
+	System.out.println("choose the sorting techinque");
+	int n1=scanner.nextInt();
+	Second_largest s=new Second_largest();
+	switch(n1)
+	{
+	case 1:
+		s.bubble(arr,n);
+		break;
+	case 2:
+		s.selection(arr,n);
+		break;
+	default:
+		System.out.println("Invalid");
+	}
+	System.out.println("Array after sorting");
+	for(int i=0;i<n;i++)
+	{
+		System.out.println(arr[i]+" ");
+	}
+	int largest=arr[n-1];
+	int second_largest=0;
+	for(int i=n-2;i>=0;i--)
+	{
+		if(arr[i]==largest)
+		{
+			continue;
+		}
+		else
+			System.out.println("The second largest element is "+ arr[i]+ " and the index is "+i);
+		break;
+	}
+	
+}
+}
