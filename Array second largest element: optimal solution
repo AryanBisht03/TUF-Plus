@@ -1,0 +1,26 @@
+Optimal Solution:
+package second;
+import java.util.*;
+public class s {
+Scanner scanner =new Scanner(System.in);
+int n=scanner.nextInt();
+int arr[]=new int[n];
+for(int i=0;i<n;i++)
+{
+	arr[i]=scanner.nextInt();
+}
+int largest=Integer.MIN_VALUE;
+int secondlargest=Integer.MIN_VALUE;
+for(int i=0;i<n;i++)
+{
+	if(arr[i]>largest)
+	{
+		secondlargest=largest;
+		largest=arr[i];
+	}
+	else if(arr[i]>secondlargest && arr[i]!=largest)
+		secondlargest=arr[i];
+}
+System.out.println("Largest is :"+largest);
+System.out.println("SecondLargest is :"+secondlargest);
+}
