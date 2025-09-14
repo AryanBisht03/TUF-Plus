@@ -1,0 +1,17 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        Set<Integer> numbers=new LinkedHashSet<>();
+        int count=0;
+        for(int number:nums)
+        {
+            numbers.add(number);
+        }
+        int k=numbers.size();
+        int j=0;
+        for(int num:numbers)
+        {
+            nums[j++]=num;
+        }
+        return k;
+    }
+}
