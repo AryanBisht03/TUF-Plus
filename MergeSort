@@ -1,0 +1,86 @@
+package second;
+import java.util.*;
+public class merge {
+	
+	public void mergee(int arr[],int low,int mid,int high)
+	{
+		ArrayList<Integer> temp=new ArrayList<>();
+		int left=low;
+		int right=mid+1;
+		
+		while(left<=mid && right<=high)
+		{
+			if(arr[left]<=arr[right])
+			{
+				temp.add(arr[left]);
+				left++;
+			}
+			else
+			{
+				temp.add(arr[right]);
+				right++;
+			}
+			
+		}
+		while(left<=mid)
+		{
+			temp.add(arr[left]);
+			left++;
+		}
+		while(right<=high)
+		{
+			temp.add(arr[right]);
+			right++;
+		}
+		
+		for(int i=low;i<=high;i++)
+		{
+			arr[i]=temp.get(i-low);
+		}
+	}
+	
+	
+	public void mergesorthelper(int arr[],int low,int high)
+	{
+		if(low>=high)
+			return;
+		int mid=(low+high)/2;
+		mergesorthelper(arr,low,mid);
+		mergesorthelper(arr,mid+1,high);
+		mergee(arr,low,mid,high);
+	}
+	
+	public int[] mergesort(int arr[])
+	{
+		int n=arr.length;
+		mergesorthelper(arr,0,n-1);
+		return arr;
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		int n=scanner.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			arr[i]=scanner.nextInt();
+		}
+        System.out.println("Array before sorting");
+        for(int i=0;i<n;i++)
+        {
+        	System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+        int low=0;
+        int high=n-1;
+        merge m=new merge();
+        int arr2[]=m.mergesort(arr);
+        System.out.println("Array after sorting");
+        for(int i=0;i<n;i++)
+        {
+        	System.out.print(arr2[i]+" ");
+        }
+        System.out.println();
+        
+	}
+}
