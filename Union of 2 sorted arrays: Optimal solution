@@ -1,0 +1,82 @@
+package second;
+import java.util.*;
+public class Sorted {
+	
+	public int[] finder(int arr1[],int arr2[])
+	{
+		int n=arr1.length;
+		int m=arr2.length;
+		int i=0;
+		int j=0;
+		ArrayList<Integer> temp=new ArrayList<>();
+		while(i<n && j<m)
+		{
+			if(arr1[i]<=arr2[j])
+			{
+				if(temp.isEmpty()|| temp.get(temp.size()-1)!=arr1[i])
+				{
+					temp.add(arr1[i]);
+				}
+				i++;
+			}
+			else
+			{
+				if(temp.isEmpty()||temp.get(temp.size()-1)!=arr2[j])
+						{
+					      temp.add(arr2[j]);
+						}
+				j++;
+			}
+		}
+		while(i<n)
+		{
+			if(temp.isEmpty()|| temp.get(temp.size()-1)!=arr1[i])
+			{
+				temp.add(arr1[i]);
+			}
+			i++;
+		}
+		while(j<m)
+		{
+			if(temp.isEmpty()||temp.get(temp.size()-1)!=arr2[j])
+					{
+				      temp.add(arr2[j]);
+					}
+			j++;
+		}
+		int union[]=new int[temp.size()];
+		for(int k=0;k<temp.size();k++)
+		{
+			union[k]=temp.get(k);
+		}
+		return union;
+	}
+	
+public static void main(String[] args) {
+	Scanner scanner=new Scanner(System.in);
+	System.out.println("Enter the number of elements you wanted in your array1");
+	int n=scanner.nextInt();
+	int arr1[]=new int[n];
+	System.out.println("Enter Elements");
+	for(int i=0;i<n;i++)
+	{
+		arr1[i]=scanner.nextInt();
+	}
+	System.out.println("Enter the number of elements you wanted in your array2");
+	int m=scanner.nextInt();
+	int arr2[]=new int[m];
+	System.out.println("Enter Elements");
+	for(int i=0;i<m;i++)
+	{
+		arr2[i]=scanner.nextInt();
+	}
+	Sorted s=new Sorted();
+	int arr3[]=s.finder(arr1,arr2);
+	System.out.println("The final union of both the arrays are ");
+	for(int i=0;i<arr3.length;i++)
+	{
+		System.out.print(arr3[i]+" ");
+	}
+	scanner.close();
+}
+}
