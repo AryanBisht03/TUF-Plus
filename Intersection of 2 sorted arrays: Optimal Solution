@@ -1,0 +1,28 @@
+class Solution {
+    public int[] intersectionArray(int[] num1, int[] num2) {
+       int n=num1.length;
+       int m=num2.length;
+       int i=0;
+       int j=0;
+       ArrayList<Integer> temp=new ArrayList<>();
+       while(i<n && j<m)
+       {
+        if(num1[i]<num2[j])
+        i++;
+        else if(num2[j]<num1[i])
+        j++;
+        else
+        {
+           temp.add(num1[i]);
+           i++;
+           j++;
+        }
+       }
+       int arr[]=new int[temp.size()];
+       for(int k=0;k<temp.size();k++)
+       {
+        arr[k]=temp.get(k);
+       }
+       return arr; 
+    }
+}
