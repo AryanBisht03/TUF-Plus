@@ -1,0 +1,23 @@
+package second;
+import java.util.*;
+public class HASHING {
+public static void main(String[] args) {
+	Scanner scanner=new Scanner(System.in);
+	int n=scanner.nextInt();
+	int arr[]=new int[n];
+	int maximum_element=Integer.MIN_VALUE;
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=scanner.nextInt();
+		if(arr[i]>maximum_element)
+			maximum_element=arr[i];
+	}
+	int hashtable[]=new int[maximum_element+1];
+	for(int i=0;i<n;i++)
+	{
+		hashtable[arr[i]]++;
+	}
+	int number=scanner.nextInt();
+	System.out.println("The number of count is "+hashtable[number]);
+}
+}
