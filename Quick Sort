@@ -1,0 +1,74 @@
+package aryan;
+import java.util.*;
+public class quick {
+	
+	public int partition(int arr[],int low,int high)
+	{
+		int left=low;
+		int right=high;
+		int pivot=arr[low];
+		while(left<right)
+		{
+			while(arr[left]<=pivot && left<high)
+			{
+				left++;
+			}
+			while(arr[right]>pivot && right>=low+1)
+			{
+				right--;
+			}
+			if(left<right)
+			{
+				swap(arr,left,right);
+			}
+		}
+		swap(arr,low,right);
+		return right;
+	}
+	
+	public void quicksorthelper(int arr[],int low,int high)
+	{
+		if(low<high)
+		{
+		    int partitionindex=partition(arr,low,high);
+		    quicksorthelper(arr,low,partitionindex-1);
+		    quicksorthelper(arr,partitionindex+1,high);
+		}
+		
+	}
+	
+	public int[] quicksort(int arr[],int n)
+	{
+		quicksorthelper(arr,0,n-1);
+		return arr;
+	}
+	
+	public void swap(int arr[],int i,int j)
+	{
+		int temp=arr[i];
+		arr[i]=arr[j];
+		arr[j]=temp;
+	}
+	
+public static void main(String[] args) {
+	Scanner scanner=new Scanner(System.in);
+	int n=scanner.nextInt();
+	int arr[]=new int[n];
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=scanner.nextInt();
+	}
+	for(int i=0;i<n;i++)
+	{
+		System.out.print(arr[i]+" ");
+	}
+	System.out.println();
+	quick q=new quick();
+	int arr2[]=q.quicksort(arr,n);
+	for(int i=0;i<n;i++)
+	{
+		System.out.print(arr2[i]+" ");
+	}
+	System.out.println();
+}
+}
