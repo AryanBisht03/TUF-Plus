@@ -8,9 +8,9 @@ public class lbr {
 			return n;
 		int mid=(low+high)/2;
 		if(arr[mid]>target)
-			return lowerb(arr,n,target,low,mid-1);
+			return upperb(arr,n,target,low,mid-1);
 		else
-			return lowerb(arr,n,target,mid+1,high);
+			return upperb(arr,n,target,mid+1,high);
 	}
 	
 	public static void main(String[] args) {
