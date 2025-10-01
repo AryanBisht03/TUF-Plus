@@ -1,0 +1,29 @@
+package aryan;
+import java.util.*;
+public class lbr {
+	
+	public int lowerb(int arr[],int n,int target,int low, int high)
+	{
+		if(low>high)
+			return n;
+		int mid=(low+high)/2;
+		if(arr[mid]>=target)
+			return lowerb(arr,n,target,low,mid-1);
+		else
+			return lowerb(arr,n,target,mid+1,high);
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner=new Scanner(System.in);
+		int n=scanner.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			arr[i]=scanner.nextInt();
+		}
+		int target=scanner.nextInt();
+		lbr b=new lbr();
+		int answer=b.lowerb(arr,n,target,0,n-1);
+		System.out.println("The target element is at place "+answer);
+	}
+}
